@@ -1,4 +1,10 @@
-module.exports={
+var webpack = require('webpack');
+var path = require('path');
+const cssModulesPath = path.resolve(__dirname,'src/style');
+
+
+
+const webpackDev ={
   devtool: 'source-map',//找到源代码错误
   entry:'./index.js',　　　//指定入口文件
   output:{
@@ -10,20 +16,23 @@ module.exports={
     extensions: [".js",".css",".jpg",".png"]
   },
   module: {
-    rules: [
+    loaders: [
       {
         test: /\.js$/,　　　　//编译.js文件
         exclude: /node_modules/,
-        use: "babel-loader"  //用babel-loader包编译
+        loader: "babel-loader"  //用babel-loader包编译
       },
       {
         test: /\.css$/,
-        use: ['style-loader','css-loader']
+        loader: 'style-loader!css-loader?modules'
       },
       {
         test:/\.(jpe?g|png)$/,
-        use: 'file-loader'
+        loader: 'file-loader'
       }
     ]
   }
 }
+
+
+module.exports=webpackDev
