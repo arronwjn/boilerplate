@@ -6,7 +6,7 @@ const cssModulesPath = path.resolve(__dirname,'src/style');
 
 const webpackDev ={
   devtool: 'source-map',//找到源代码错误
-  entry:'./index.js',　　　//指定入口文件
+  entry:'./src/index.js',　　　//指定入口文件
   output:{
     path:'/build',　　　　　　//出口文件所在文件夹
     filename:'bundle.js',　　//出口文件
